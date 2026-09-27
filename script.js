@@ -77,6 +77,44 @@ filterButtons.forEach((btn) => {
   });
 });
 
+// ===== Animated credential counters =====
+const counters = document.querySelectorAll(".credential-num[data-count-to]");
+function animateCounter(el) {
+  const target = parseInt(el.dataset.countTo, 10);
+  const suffix = el.dataset.suffix || "";
+  const duration = 1600;
+  let start = null;
+
+  function step(timestamp) {
+    if (start === null) start = timestamp;
+    const progress = Math.min((timestamp - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const value = Math.round(target * eased);
+    el.textContent = value + suffix;
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      el.textContent = target + suffix;
+    }
+  }
+  requestAnimationFrame(step);
+}
+
+if (counters.length) {
+  const counterObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+  counters.forEach((el) => counterObserver.observe(el));
+}
+
 // ===== Sticky top bar on scroll =====
 const topbar = document.getElementById("topbar");
 const onScroll = () => {
