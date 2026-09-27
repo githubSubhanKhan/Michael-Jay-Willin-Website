@@ -239,12 +239,16 @@ document.getElementById("year").textContent = new Date().getFullYear();
     "Has his work been featured anywhere?",
   ];
 
+  function scrollToBottom() {
+    messages.scrollTop = messages.scrollHeight;
+  }
+
   function addMessage(text, sender) {
     const el = document.createElement("div");
     el.className = `chat-msg ${sender}`;
     el.textContent = text;
     messages.appendChild(el);
-    messages.scrollTop = messages.scrollHeight;
+    scrollToBottom();
   }
 
   function renderSuggestions(list) {
@@ -257,6 +261,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
       btn.addEventListener("click", () => handleUserMessage(text));
       suggestions.appendChild(btn);
     });
+    scrollToBottom();
   }
 
   function findAnswer(rawText) {
@@ -279,11 +284,11 @@ document.getElementById("year").textContent = new Date().getFullYear();
   function handleUserMessage(text) {
     const trimmed = text.trim();
     if (!trimmed) return;
+    renderSuggestions([]);
     addMessage(trimmed, "user");
     input.value = "";
     const answer = findAnswer(trimmed);
     setTimeout(() => addMessage(answer, "bot"), 350);
-    renderSuggestions(defaultSuggestions);
   }
 
   function openChat() {
