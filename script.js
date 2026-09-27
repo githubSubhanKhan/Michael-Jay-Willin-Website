@@ -8,15 +8,15 @@
 
 // ===== Data: sample projects (representative of the 28+ style-grouped portfolio) =====
 const projects = [
-  { title: "Stonebridge Manor", style: "shingle", styleLabel: "Shingle Style", loc: "Cold Spring Harbor, NY", img: "images/hero.png" },
-  { title: "The Rosewood Residence", style: "colonial", styleLabel: "Colonial Revival", loc: "Huntington, NY", img: "images/colonial.png" },
-  { title: "Whitestone Georgian", style: "georgian", styleLabel: "Georgian", loc: "Lloyd Harbor, NY", img: "images/georgian.png" },
-  { title: "Maison Fontaine", style: "french", styleLabel: "French Renaissance", loc: "Old Westbury, NY", img: "images/french.png" },
-  { title: "Ashford Hall", style: "tudor", styleLabel: "Jacobean Tudor", loc: "Locust Valley, NY", img: "images/tudor.png" },
-  { title: "Craftsman on the Sound", style: "craftsman", styleLabel: "Craftsman", loc: "Centerport, NY", img: "images/craftsman.png" },
-  { title: "Seabreeze Shingle Estate", style: "shingle", styleLabel: "Shingle Style", loc: "Bayville, NY", img: "images/hero.png" },
-  { title: "Heritage Colonial", style: "colonial", styleLabel: "Colonial Revival", loc: "Northport, NY", img: "images/colonial.png" },
-  { title: "Kensington Georgian", style: "georgian", styleLabel: "Georgian", loc: "Muttontown, NY", img: "images/georgian.png" },
+  { title: "Stonebridge Manor", style: "shingle", styleLabel: "Shingle Style", loc: "Cold Spring Harbor, NY", img: "images/hero.jpg" },
+  { title: "The Rosewood Residence", style: "colonial", styleLabel: "Colonial Revival", loc: "Huntington, NY", img: "images/colonial.jpg" },
+  { title: "Whitestone Georgian", style: "georgian", styleLabel: "Georgian", loc: "Lloyd Harbor, NY", img: "images/georgian.jpg" },
+  { title: "Maison Fontaine", style: "french", styleLabel: "French Renaissance", loc: "Old Westbury, NY", img: "images/french.jpg" },
+  { title: "Ashford Hall", style: "tudor", styleLabel: "Jacobean Tudor", loc: "Locust Valley, NY", img: "images/tudor.jpg" },
+  { title: "Craftsman on the Sound", style: "craftsman", styleLabel: "Craftsman", loc: "Centerport, NY", img: "images/craftsman.jpg" },
+  { title: "Seabreeze Shingle Estate", style: "shingle", styleLabel: "Shingle Style", loc: "Bayville, NY", img: "images/hero.jpg" },
+  { title: "Heritage Colonial", style: "colonial", styleLabel: "Colonial Revival", loc: "Northport, NY", img: "images/colonial.jpg" },
+  { title: "Kensington Georgian", style: "georgian", styleLabel: "Georgian", loc: "Muttontown, NY", img: "images/georgian.jpg" },
 ];
 
 const grid = document.getElementById("projectGrid");
@@ -38,14 +38,14 @@ if (grid) {
 
 // ===== Renderings grid =====
 const renderingStyles = [
-  { label: "Georgian", img: "images/georgian.png" },
-  { label: "Beaux-Arts", img: "images/georgian.png" },
-  { label: "Craftsman", img: "images/craftsman.png" },
-  { label: "Colonial Revival", img: "images/colonial.png" },
-  { label: "Shingle Style", img: "images/hero.png" },
-  { label: "Jacobean Tudor", img: "images/tudor.png" },
-  { label: "Chateauesque", img: "images/french.png" },
-  { label: "Dutch Colonial", img: "images/colonial.png" },
+  { label: "Georgian", img: "images/georgian.jpg" },
+  { label: "Beaux-Arts", img: "images/georgian.jpg" },
+  { label: "Craftsman", img: "images/craftsman.jpg" },
+  { label: "Colonial Revival", img: "images/colonial.jpg" },
+  { label: "Shingle Style", img: "images/hero.jpg" },
+  { label: "Jacobean Tudor", img: "images/tudor.jpg" },
+  { label: "Chateauesque", img: "images/french.jpg" },
+  { label: "Dutch Colonial", img: "images/colonial.jpg" },
 ];
 
 const renderingGrid = document.getElementById("renderingGrid");
