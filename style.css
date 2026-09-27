@@ -361,7 +361,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--charcoal);}
 .project-info{
   position:absolute;left:0;right:0;bottom:0;
   padding:1.5rem;
-  background:linear-gradient(180deg, transparent, rgba(15,17,23,.9));
+  padding-top:5rem;
+  background:linear-gradient(180deg, transparent, rgba(10,11,15,.55) 45%, rgba(10,11,15,.96) 100%);
   color:var(--white);
 }
 .project-info .p-style{
@@ -371,14 +372,17 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--charcoal);}
   color:var(--gold-light);
   display:block;
   margin-bottom:.3rem;
+  text-shadow:0 1px 6px rgba(0,0,0,.7);
 }
 .project-info h3{
   color:var(--white);
   font-size:1.3rem;
+  text-shadow:0 1px 8px rgba(0,0,0,.75);
 }
 .project-info .p-loc{
   font-size:.8rem;
-  color:#d8d5cf;
+  color:#e8e6e1;
+  text-shadow:0 1px 6px rgba(0,0,0,.7);
 }
 .project-card.hidden{display:none;}
 
