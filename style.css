@@ -44,7 +44,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--charcoal);}
 .topbar{
   position:fixed;top:0;left:0;right:0;
   z-index:1000;
-  background:rgba(27,31,42,0);
+  background:rgba(27,31,42,.55);
   transition:background .35s ease, box-shadow .35s ease;
 }
 .topbar.scrolled{
