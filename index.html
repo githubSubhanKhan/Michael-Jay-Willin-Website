@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Michael Jay Wallin Architect — Concept Redesign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <span class="brand">MICHAEL JAY WALLIN <span class="brand-thin">ARCHITECT</span></span>
+    <nav class="nav" id="mainNav">
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#renderings">Renderings</a>
+      <a href="#consult" class="nav-cta">Request Consultation</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</div>
+
+<header class="hero">
+  <img class="hero-media" src="images/hero.png" alt="Gold Coast shingle-style estate at golden hour" onerror="this.closest('.hero').classList.add('img-missing')">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Est. 1992 &middot; Roslyn Heights, NY</p>
+    <h1>Thirty Years of Architectural Integrity on Long Island's Gold Coast</h1>
+    <p class="hero-sub">Custom residential architecture rooted in symmetry, proportion, and historical correctness — from Georgian manors to modern Shingle Style estates.</p>
+    <div class="hero-actions">
+      <a href="#consult" class="btn btn-primary">Request a Consultation</a>
+      <a href="#portfolio" class="btn btn-ghost">View the Portfolio</a>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</header>
+
+<section class="credentials">
+  <div class="credentials-inner">
+    <div class="credential">
+      <span class="credential-num">30+</span>
+      <span class="credential-label">Years in Practice</span>
+    </div>
+    <div class="credential">
+      <span class="credential-num">28+</span>
+      <span class="credential-label">Homes Designed</span>
+    </div>
+    <div class="credential">
+      <span class="credential-num">2015</span>
+      <span class="credential-label">Archi Award Winner</span>
+    </div>
+    <div class="credential">
+      <span class="credential-num">2</span>
+      <span class="credential-label">Hollywood Productions Featured</span>
+    </div>
+  </div>
+  <p class="press-line">As seen in <em>The Wolf of Wall Street</em> and <em>Gotham</em></p>
+</section>
+
+<section class="philosophy" id="philosophy">
+  <div class="philosophy-inner">
+    <span class="section-tag">Design Philosophy</span>
+    <blockquote>
+      &ldquo;Architecture is based on symmetry and proportions, and beauty a product of rational order and
+      harmonious proportion.&rdquo;
+    </blockquote>
+    <p class="philosophy-attr">— drawing on Pythagoras, the foundation of Michael Jay Wallin's design practice</p>
+    <p class="philosophy-body">
+      Every residence is treated as a unique commission — a balance of modern amenities and traditional
+      architectural values, designed with client satisfaction placed above recognition, and executed with
+      the historical correctness that defines the Gold Coast's most enduring homes.
+    </p>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <img class="about-image" src="images/about.png" alt="Architect's drafting desk with blueprints and drafting tools" loading="lazy" onerror="this.closest('.about-image').classList.add('img-missing')">
+    <div class="about-text">
+      <span class="section-tag">About the Architect</span>
+      <h2>Michael Jay Wallin, R.A.</h2>
+      <p>
+        After four years in the U.S. Army stationed in Germany as a cartographer, and fifteen years at
+        top Long Island residential design-build firms, Michael founded his boutique architectural
+        practice in 1992. He holds a Bachelor's Degree in Architecture from NYIT and has spent over
+        three decades creating hundreds of high-end homes across the region.
+      </p>
+      <p>
+        In 2015 his work received the Archi Award for outstanding residential design. His designs
+        have also appeared on screen in <em>The Wolf of Wall Street</em> and the television drama
+        <em>Gotham</em> — a testament to the cinematic quality of his architectural vision.
+      </p>
+      <a href="#consult" class="link-arrow">Start a conversation about your home &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio" id="portfolio">
+  <div class="section-head">
+    <span class="section-tag">Completed Projects</span>
+    <h2>An Architectural Style for Every Vision</h2>
+    <p class="section-sub">Filter the portfolio by style to explore the full range of Michael's residential work.</p>
+  </div>
+
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="shingle">Shingle Style</button>
+    <button class="filter-btn" data-filter="colonial">Colonial Revival</button>
+    <button class="filter-btn" data-filter="georgian">Georgian</button>
+    <button class="filter-btn" data-filter="french">French Renaissance</button>
+    <button class="filter-btn" data-filter="tudor">Jacobean Tudor</button>
+    <button class="filter-btn" data-filter="craftsman">Craftsman</button>
+  </div>
+
+  <div class="project-grid" id="projectGrid">
+    <!-- Cards injected by JS -->
+  </div>
+</section>
+
+<section class="renderings" id="renderings">
+  <div class="section-head light">
+    <span class="section-tag">Renderings</span>
+    <h2>From Concept to Blueprint</h2>
+    <p class="section-sub">A glimpse into the design process across traditional and transitional architectural styles.</p>
+  </div>
+  <div class="rendering-grid" id="renderingGrid"></div>
+</section>
+
+<section class="consult" id="consult">
+  <div class="consult-inner">
+    <div class="consult-copy">
+      <span class="section-tag light">Start Your Project</span>
+      <h2>Request a Design Consultation</h2>
+      <p>
+        Tell us about your vision and we'll follow up to schedule an introductory call with Michael.
+        Share as much detail as you'd like — style preferences, site photos, or an existing survey.
+      </p>
+      <ul class="consult-points">
+        <li>New construction, renovation, or addition</li>
+        <li>Any of 15+ classical and transitional architectural styles</li>
+        <li>Serving the Gold Coast, Huntington, and greater Long Island</li>
+      </ul>
+      <div class="consult-contact">
+        <p><strong>Phone:</strong> (631) 827-0594</p>
+        <p><strong>Email:</strong> michael@architectwallin.com</p>
+        <p><strong>Office:</strong> 69 Roslyn Road, Roslyn Heights, NY 11577</p>
+      </div>
+    </div>
+
+    <form class="consult-form" id="consultForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+        <div class="form-group">
+          <label for="projectType">Project Type</label>
+          <select id="projectType" name="projectType">
+            <option value="new">New Construction</option>
+            <option value="renovation">Renovation</option>
+            <option value="addition">Addition</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="style">Preferred Style</label>
+          <select id="style" name="style">
+            <option>Shingle Style</option>
+            <option>Colonial Revival</option>
+            <option>Georgian</option>
+            <option>French Renaissance</option>
+            <option>Jacobean Tudor</option>
+            <option>Craftsman</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="budget">Estimated Budget</label>
+          <select id="budget" name="budget">
+            <option>Under $1M</option>
+            <option>$1M &ndash; $3M</option>
+            <option>$3M &ndash; $5M</option>
+            <option>$5M+</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="upload">Site Photos / Survey / Inspiration</label>
+        <div class="upload-zone" id="uploadZone">
+          <input type="file" id="upload" name="upload" multiple hidden>
+          <span id="uploadText">Drag &amp; drop files, or click to browse</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message">Tell us about your project</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-full">Submit Request</button>
+      <p class="form-note" id="formNote"></p>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span class="brand small">MICHAEL JAY WALLIN <span class="brand-thin">ARCHITECT</span></span>
+    <p>&copy; <span id="year"></span> Michael Jay Wallin Architect. Concept redesign prepared by East Coast Team.</p>
+    <a href="https://www.linkedin.com/in/michael-jay-wallin-r-a-9aab64145" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
