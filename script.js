@@ -145,3 +145,172 @@ consultForm.addEventListener("submit", (e) => {
 
 // ===== Footer year =====
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// ===== Floating Q&A Chatbot =====
+(function () {
+  const chatbot = document.getElementById("chatbot");
+  const toggle = document.getElementById("chatbotToggle");
+  const closeBtn = document.getElementById("chatbotClose");
+  const messages = document.getElementById("chatbotMessages");
+  const suggestions = document.getElementById("chatbotSuggestions");
+  const form = document.getElementById("chatbotForm");
+  const input = document.getElementById("chatbotInput");
+
+  if (!chatbot || !toggle) return;
+
+  // Knowledge base: each entry has keywords to match and a canned answer,
+  // written from the same facts already on this page.
+  const knowledgeBase = [
+    {
+      keywords: ["style", "styles", "design", "type of home", "architectural style"],
+      question: "What architectural styles does Michael design?",
+      answer:
+        "Michael works across 15+ classical and transitional styles, including Shingle Style, Colonial Revival, Georgian, French Renaissance, Jacobean Tudor, and Craftsman. You can browse examples of each in the Portfolio section above.",
+    },
+    {
+      keywords: ["experience", "years", "background", "history", "founded", "since when", "how long"],
+      question: "How long has Michael been practicing?",
+      answer:
+        "Michael Jay Wallin founded his boutique architectural practice in 1992, following four years as a U.S. Army cartographer in Germany and fifteen years at top Long Island design-build firms. He's been designing custom homes for over three decades.",
+    },
+    {
+      keywords: ["award", "wolf of wall street", "gotham", "movie", "tv", "film", "featured", "press", "recognition"],
+      question: "Has his work been featured anywhere?",
+      answer:
+        "Yes — his work received the 2015 Archi Award for outstanding residential design, and his designs have appeared on screen in The Wolf of Wall Street and the TV drama Gotham.",
+    },
+    {
+      keywords: ["location", "where", "based", "area", "serve", "gold coast", "long island", "office", "address"],
+      question: "Where is the practice located?",
+      answer:
+        "The office is at 69 Roslyn Road, Roslyn Heights, NY 11577. Michael serves the Gold Coast, Huntington, and greater Long Island area.",
+    },
+    {
+      keywords: ["contact", "phone", "call", "email", "reach", "get in touch"],
+      question: "How can I contact Michael?",
+      answer:
+        "You can call (631) 827-0594 or email michael@architectwallin.com. You're also welcome to fill out the consultation request form below and the team will follow up.",
+    },
+    {
+      keywords: ["consult", "consultation", "get started", "start a project", "hire", "quote", "estimate", "cost", "budget", "price"],
+      question: "How do I start a project?",
+      answer:
+        "Request a design consultation using the form in the \"Start Your Project\" section — share your style preferences, site photos, or a survey, and the team will follow up to schedule an introductory call with Michael.",
+    },
+    {
+      keywords: ["philosophy", "approach", "belief", "symmetry", "proportion"],
+      question: "What is Michael's design philosophy?",
+      answer:
+        "His practice is grounded in symmetry, proportion, and historical correctness — drawing on classical principles going back to Pythagoras. Every residence is treated as a unique commission balancing modern amenities with traditional architectural values.",
+    },
+    {
+      keywords: ["education", "degree", "license", "credentials", "r.a.", "nyit", "army", "military"],
+      question: "What's Michael's professional background?",
+      answer:
+        "Michael holds a Bachelor's Degree in Architecture from NYIT and is a Registered Architect (R.A.). Before founding his own practice, he served four years in the U.S. Army as a cartographer in Germany and worked fifteen years at leading Long Island design-build firms.",
+    },
+    {
+      keywords: ["portfolio", "projects", "homes", "work", "examples", "gallery"],
+      question: "Can I see examples of past projects?",
+      answer:
+        "Absolutely — scroll to the Portfolio section to filter 28+ completed homes by style, and check the Renderings section for a look at the design process from concept to blueprint.",
+    },
+    {
+      keywords: ["new construction", "renovation", "addition", "remodel"],
+      question: "Does he handle renovations, or only new builds?",
+      answer:
+        "Both — the practice takes on new construction, renovations, and additions. You can specify which applies to you on the consultation form.",
+    },
+    {
+      keywords: ["hello", "hi", "hey", "help", "who are you", "what can you do"],
+      question: "What can I ask?",
+      answer:
+        "Hi! I can answer questions about Michael's architectural styles, experience, background, portfolio, or how to request a consultation. Try one of the suggestions below, or type your own question.",
+    },
+  ];
+
+  const fallbackAnswer =
+    "I don't have a specific answer for that yet, but I'd be glad to connect you with the team — call (631) 827-0594, email michael@architectwallin.com, or fill out the consultation form below.";
+
+  const defaultSuggestions = [
+    "What styles does he design?",
+    "How do I request a consultation?",
+    "Where are you located?",
+    "Has his work been featured anywhere?",
+  ];
+
+  function addMessage(text, sender) {
+    const el = document.createElement("div");
+    el.className = `chat-msg ${sender}`;
+    el.textContent = text;
+    messages.appendChild(el);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function renderSuggestions(list) {
+    suggestions.innerHTML = "";
+    list.forEach((text) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "suggestion-btn";
+      btn.textContent = text;
+      btn.addEventListener("click", () => handleUserMessage(text));
+      suggestions.appendChild(btn);
+    });
+  }
+
+  function findAnswer(rawText) {
+    const text = rawText.toLowerCase();
+    let best = null;
+    let bestScore = 0;
+    knowledgeBase.forEach((entry) => {
+      const score = entry.keywords.reduce(
+        (acc, kw) => (text.includes(kw) ? acc + 1 : acc),
+        0
+      );
+      if (score > bestScore) {
+        bestScore = score;
+        best = entry;
+      }
+    });
+    return best ? best.answer : fallbackAnswer;
+  }
+
+  function handleUserMessage(text) {
+    const trimmed = text.trim();
+    if (!trimmed) return;
+    addMessage(trimmed, "user");
+    input.value = "";
+    const answer = findAnswer(trimmed);
+    setTimeout(() => addMessage(answer, "bot"), 350);
+    renderSuggestions(defaultSuggestions);
+  }
+
+  function openChat() {
+    chatbot.classList.add("open");
+    toggle.setAttribute("aria-expanded", "true");
+    if (!messages.childElementCount) {
+      addMessage(
+        "Hi, I'm here to help answer questions about Michael Jay Wallin Architect. What would you like to know?",
+        "bot"
+      );
+      renderSuggestions(defaultSuggestions);
+    }
+    setTimeout(() => input.focus(), 200);
+  }
+
+  function closeChat() {
+    chatbot.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+  }
+
+  toggle.addEventListener("click", () => {
+    chatbot.classList.contains("open") ? closeChat() : openChat();
+  });
+  closeBtn.addEventListener("click", closeChat);
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    handleUserMessage(input.value);
+  });
+})();
